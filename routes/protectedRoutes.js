@@ -4,7 +4,7 @@ const User = require("../models/User");
 const authMiddleware = require("../middleware/authMiddleware");
 
 // Protected route example
-router.get("/me", authMiddleware, async (req, res) => {
+router.get("/protected", authMiddleware, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select("-password");
     res.json(user);
